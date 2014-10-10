@@ -10,32 +10,44 @@ class ElapsedTimerTest extends Specification {
 		timer = new ElapsedTimer()
 	}
 
-	def "starts with zero elapsed time"() {
+	def "elapsed time at start"() {
 
 		when:
-		def elapsed = timer.printTime()
+		def printed = timer.printTime()
+		def elapsed = timer.elapsed
 
 		then:
-		elapsed == "00:00:00"
+		printed == "00:00:00"
+
+		and:
+		elapsed == 0
 	}
 
 	def "elapsed time after few seconds"() {
 
 		when: "Advance time by 7 seconds"
 		timer.plusSeconds(7)
-		def elapsed = timer.printTime()
+		def printed = timer.printTime()
+		def elapsed = timer.elapsed
 
 		then:
-		elapsed == "00:00:07"
+		printed == "00:00:07"
+
+		and:
+		elapsed == 7
 	}
 
-	def "elapsed time after a while"() {
+	def "print elapsed time after a while"() {
 
 		when: "Advance time by 8 minutes and 12 seconds"
 		timer.plusMinutes(8).plusSeconds(12)
-		def elapsed = timer.printTime()
+		def printed = timer.printTime()
+		def elapsed = timer.elapsed
 
 		then:
-		elapsed == "00:08:12"
+		printed == "00:08:12"
+
+		and:
+		elapsed == 8*60+12
 	}
 }

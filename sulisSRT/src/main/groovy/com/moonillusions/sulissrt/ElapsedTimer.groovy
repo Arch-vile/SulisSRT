@@ -23,8 +23,13 @@ class ElapsedTimer {
 		this
 	}
 
+	def getElapsed() {
+		def period = elapsedPeriod()
+		period.toStandardSeconds().seconds
+	}
+
 	def printTime() {
-		def period = new Period(new LocalTime(0,0,0), time)
+		def period = elapsedPeriod()
 		def formatter = new PeriodFormatterBuilder()
 				.printZeroAlways()
 				.minimumPrintedDigits(2)
@@ -37,5 +42,10 @@ class ElapsedTimer {
 				.toFormatter()
 
 		formatter.print(period)
+	}
+
+	private Period elapsedPeriod() {
+		def period = new Period(new LocalTime(0,0,0), time)
+		return period
 	}
 }
