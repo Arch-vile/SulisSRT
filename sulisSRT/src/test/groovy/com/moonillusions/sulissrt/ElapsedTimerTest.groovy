@@ -1,6 +1,7 @@
 package com.moonillusions.sulissrt
 
 import spock.lang.Specification
+import com.moonillusions.sulissrt.ElapsedTimer
 
 class ElapsedTimerTest extends Specification {
 
