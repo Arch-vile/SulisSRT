@@ -2,13 +2,13 @@ package com.moonillusions.sulissrt
 
 class EventTracker {
 
-	def events = [] as Set
+	def eventTypes = [] as Set
 
 	def add(event) {
-		events.add(event)
+		eventTypes.add(event)
 	}
 
-	def getEvents() {
-		events
+	def getEventTypes() {
+		eventTypes
 	}
 }
