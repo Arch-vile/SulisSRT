@@ -13,20 +13,26 @@ class EventTrackerTest extends Specification {
 		tracker = new EventTracker()
 	}
 
+	def "adding events stores event types"() {
+		expect: 'no events to start with'
+		that tracker.events, empty()
 
-	def "foo"() {
+		when: 'add first event'
+		tracker.add("event type 1")
 
-		expect:
-		1 == 1
+		then: 'event type is stored'
+		that tracker.events, contains("event type 1")
+
+		when: 'add second event'
+		tracker.add("event type 2")
+
+		then: 'both events types stored'
+		that tracker.events, contains("event type 1", "event type 2")
+
+		when: 're-add event with first event type'
+		tracker.add("event type 1")
+
+		then: 'no new event types stored'
+		that tracker.events, contains("event type 1", "event type 2")
 	}
-
-
-	//	def "adding event"() {
-	//
-	//		when:
-	//		tracker.add("some event")
-	//
-	//		then:
-	//		that tracker.events contains "some event"
-	//	}
 }
