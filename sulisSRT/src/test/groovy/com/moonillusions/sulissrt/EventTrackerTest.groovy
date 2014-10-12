@@ -13,7 +13,7 @@ class EventTrackerTest extends Specification {
 		tracker = new EventTracker()
 	}
 
-	def "adding events2"() {
+	def "adding events"() {
 
 		expect: 'no events to start with'
 		that tracker.events, empty()

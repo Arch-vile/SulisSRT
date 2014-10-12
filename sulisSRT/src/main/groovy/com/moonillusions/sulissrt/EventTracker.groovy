@@ -4,7 +4,7 @@ class EventTracker {
 
 	def timer = new ElapsedTimer()
 	def eventTypes = [] as Set
-	def events = [] as Set
+	def events = new EventList()
 
 	def add(eventType) {
 		eventTypes.add(eventType)
@@ -12,7 +12,7 @@ class EventTracker {
 	}
 
 	def getEvents() {
-		return events
+		return events.events
 	}
 
 	def getEventTypes() {
