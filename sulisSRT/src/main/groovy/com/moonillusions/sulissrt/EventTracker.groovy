@@ -18,4 +18,12 @@ class EventTracker {
 	def getEventTypes() {
 		eventTypes
 	}
+
+	def getEventsAfter() {
+		events.events.findAll { it.elapsedSeconds >= timer.elapsed }
+	}
+
+	def getEventsBefore() {
+		events.events.findAll { it.elapsedSeconds < timer.elapsed }
+	}
 }
