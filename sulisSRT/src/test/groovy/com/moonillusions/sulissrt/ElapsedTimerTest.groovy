@@ -1,7 +1,6 @@
 package com.moonillusions.sulissrt
 
 import spock.lang.Specification
-import com.moonillusions.sulissrt.ElapsedTimer
 
 class ElapsedTimerTest extends Specification {
 
@@ -9,6 +8,14 @@ class ElapsedTimerTest extends Specification {
 
 	def setup() {
 		timer = new ElapsedTimer()
+	}
+
+	def "jump to"() {
+		when:
+		timer.jumpTo(12,5)
+
+		then:
+		timer.elapsed == 12*60+5
 	}
 
 	def "elapsed time at start"() {

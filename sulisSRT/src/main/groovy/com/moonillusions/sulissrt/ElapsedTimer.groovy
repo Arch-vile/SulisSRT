@@ -23,6 +23,11 @@ class ElapsedTimer {
 		this
 	}
 
+
+	def jumpTo(minutes, seconds) {
+		time = new LocalTime(0,minutes,seconds)
+	}
+
 	def getElapsed() {
 		def period = elapsedPeriod()
 		period.toStandardSeconds().seconds
