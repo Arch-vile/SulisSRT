@@ -13,7 +13,7 @@ class EventTrackerTest extends Specification {
 		tracker = new EventTracker()
 	}
 
-	def "adding events"() {
+	def "adding events2"() {
 
 		expect: 'no events to start with'
 		that tracker.events, empty()
@@ -23,6 +23,15 @@ class EventTrackerTest extends Specification {
 
 		then: 'event with correct time is added'
 		that tracker.events, contains(new Event(type: "some event",elapsedSeconds: 0))
+
+		when: 'advance elapsed time with 5 seconds'
+		tracker.timer.plusSeconds(5)
+		tracker.add("other event")
+
+		then: 'second event added'
+		that tracker.events, contains(
+				new Event(type: "some event",elapsedSeconds: 0),
+				new Event(type: "other event",elapsedSeconds: 5))
 	}
 
 	def "adding events stores event types"() {
